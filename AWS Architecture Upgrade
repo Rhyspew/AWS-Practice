@@ -1,0 +1,38 @@
+# Project inspired by Adrian Cantril course labs.
+
+This project will take a simple Wordpress App and upgrade it to a highly available and secure architecture.
+Services used:
+EC2
+RDS
+Systems Manager: Session Manager
+Systems Manager: Parameter Store
+EFS
+ALB
+CloudWatch
+
+Stage 1:
+# Use ACantril CloudFormation stack to launch instance
+- Once instance is running, manually configure via seeion manager connection. Use code from ACantril. 
+- Configuration uses parameters stored in parameter store. Ensure reference is correct in script. 
+- This part of the process provides experience in launching and configuring an app manually. 
+
+Stage2:
+# Create a pre-configured launch template to automate app launch
+- Create a Launch template, ensure to input the configuration used in previous task
+
+Stage 3:
+# Migrate server on EC2 instance to RDS 
+- Create a MariaDB RDS instance, configure the subnets and update parameters with new DBendpoint. 
+- Update the launch template to launch the instance with only the wordpress application, add reference to read from the RDS instance. 
+
+Stage 4:
+# Create EFS storage so that the new instances can be launched using a common file storage
+- Create an EFS storage. Arrange subnets and mount points.
+- Update launch template to read from EFS
+
+Stage 5:
+# Create a way to automate instance health checks and instance recovery
+- Create an ALB, Target group and Auto Scaling group using three availability zones to automate instance health and recovery. 
+- Create a CloudWatch Alarm to monitor instance CPU usage to scale in and out based on demand
+
+
