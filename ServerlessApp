@@ -1,0 +1,36 @@
+# This app creates a serverless application and messaging system using the following services:
+- AWS Lambda
+- CloudFormation
+- AWS SES
+- AWS SMS
+- API Gateway
+- AWS Step Functions
+- S3
+
+Stage 1:
+# Configure SES and SMS
+- Configure a sender address with SES
+- Configure a recipient address with SES
+- Configure a telephone number to recieve SMS
+
+Stage 2: 
+# Configure a Lambda function to send an automated email
+- Configure an IAM role to allow the Lambda function to communicate. (A CloudFormation stack is available on ACantril serverless guide)
+- Complete a lambda code to publish the results of the users choice when using the app
+
+Stage 3:
+# Configure a state machine
+- Create a role for the state machine
+- Create a state machine using AWS Step Functions
+- The outcome of the state machine will determine whether the app will send an email, SMS or both.
+
+Stage 4:
+# Create an API and update Lambda
+- Configure a Lambda function to support API Gateway
+- Create an API and then create a Resource and Method
+- Deploy API
+
+Stage 5:
+# Use an S3 bucket to host the front end of the application
+- Set up an S3 bucket to host a static website, ensure website is public
+- Upload files and test the app
